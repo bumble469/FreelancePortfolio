@@ -1,0 +1,9 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: "DevAddict";
+  src: url("/fonts/DevAddictFont.ttf") format("truetype");
+}
+
