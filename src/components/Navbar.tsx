@@ -11,11 +11,10 @@ import {
   useTheme,
   useMediaQuery,
 } from "@mui/material";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import MenuIcon from "@mui/icons-material/Menu";
 
-const text = "WebsiteName";
+const text = "SysKraft";
 
 const navLinks = [
   { text: "Home", to: "home" },
@@ -33,7 +32,6 @@ const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  // Typewriter effect
   useEffect(() => {
     if (index < text.length) {
       const t = setTimeout(() => {
@@ -44,7 +42,6 @@ const Navbar = () => {
     }
   }, [index]);
 
-  // Active section tracking
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,7 +52,7 @@ const Navbar = () => {
         });
       },
       {
-        rootMargin: "-40% 0px -40% 0px",
+        rootMargin: "-45% 0px -45% 0px",
       }
     );
 
@@ -90,7 +87,7 @@ const Navbar = () => {
               fontWeight={700}
               sx={{
                 letterSpacing: 1,
-                fontFamily: "DevAddict",
+                fontFamily: "TitleFont",
                 color: "#111827",
               }}
             >
@@ -157,31 +154,6 @@ const Navbar = () => {
               >
                 Contact
               </Button>
-
-
-              <Button
-                variant="contained"
-                startIcon={<WorkOutlineIcon />}
-                sx={{
-                  px: 3.5,
-                  py: 1.2,
-                  textTransform: "none",
-                  fontWeight: 600,
-                  backgroundImage: "linear-gradient(135deg, #111827, #374151, #111827)",
-                  backgroundSize: "200% 200%",
-                  backgroundPosition: "0% 50%",
-                  color: "#fff",
-                  boxShadow: "0 12px 32px rgba(0, 0, 0, 0.35)",
-                  transition: "background-position 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, transform 0.35s ease",
-                  "&:hover": {
-                    backgroundPosition: "100% 50%",
-                    boxShadow: "0 18px 40px rgba(0, 0, 0, 0.45)",
-                    transform: "translateY(-2px)",
-                  },
-                }}
-              >
-                Order a Project
-              </Button>
             </Stack>
           ) : (
             <IconButton onClick={() => setDrawerOpen(true)}>
@@ -217,14 +189,6 @@ const Navbar = () => {
               fullWidth
             >
               Contact
-            </Button>
-
-            <Button
-              variant="contained"
-              startIcon={<WorkOutlineIcon />}
-              fullWidth
-            >
-              Order a Project
             </Button>
           </Stack>
         </Box>

@@ -8,36 +8,58 @@ import {
   IconButton,
   Button
 } from "@mui/material";
+import { useState } from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { motion, type Variants } from "framer-motion";
+import KnowMoreDialog from "../components/KnowMoreDialog";
+import jatinImage from "../assets/images/jatinImage.jpg";
+import alisherImage from "../assets/images/alisherImage.png";
 
-const teamMembers = [
+interface TeamMember {
+  name: string;
+  role: string;
+  description: string;
+  image: string;
+  portfolioLink?: string;
+  detailedDescription?: string;
+  image1?: string;
+  experience?: string;
+  education?: string;
+  facebookLink?: string;
+  instagramLink?: string;
+  linkedinLink?: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
     name: "Jatin Ramina",
     role: "Project Manager",
-    description:
-      "Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavid from dolor amet ipsum lorem bibendum.",
-    image: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
-    portfolioLink: "https://portfolio-jatin.dev",
+    description: "Glavi amet ritnisl libero molestie...",
+    image: jatinImage,
+    portfolioLink: "",
+    detailedDescription: "Long detailed bio about Jatin...",
+    image1: jatinImage,
+    experience: "5+ years managing cross-functional teams",
+    education: "MBA in Project Management",
+    facebookLink: "https://facebook.com/jatin.ramina",
+    instagramLink: "https://instagram.com/jatin.ramina",
+    linkedinLink: "https://linkedin.com/in/jatinramina",
   },
   {
-    name: "Ann Richmond",
-    role: "Creative Leader",
-    description:
-      "Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavid from dolor amet ipsum lorem bibendum.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
-    portfolioLink: "https://annrichmond.design",
-  },
-  {
-    name: "Bob Greenfield",
-    role: "Programming Guru",
-    description:
-      "Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavid from dolor amet ipsum lorem bibendum.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
-    portfolioLink: "https://bobcodes.dev",
+    name: "Alisher Sayed",
+    role: "Developer",
+    description: "Glavi amet ritnisl libero molestie...",
+    image: alisherImage,
+    portfolioLink: "https://portfolio-alishers-projects-a4332045.vercel.app ",
+    detailedDescription: "Long detailed bio about Ali...",
+    image1: alisherImage,
+    experience: "2+ years managing cross-functional teams",
+    education: "BSC CS in Project Management",
+    facebookLink: "",
+    instagramLink: "https://instagram.com/alisher.sayed",
+    linkedinLink: "https://linkedin.com/in/alishersayed",
   },
 ];
 
@@ -58,6 +80,8 @@ const cardVariants: Variants = {
 };
 
 const Team = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
   return (
     <Container id="team" maxWidth="lg" sx={{ py: 8 }}>
@@ -190,32 +214,37 @@ const Team = () => {
                       fontWeight: 600,
                     }}
                     onClick={() => {
-                      console.log("Know more about", member.name);
+                      setSelectedMember(member);
+                      setOpen(true);
                     }}
                   >
                     Know More
                   </Button>
 
-                  <Button
-                    size="small"
-                    variant="contained"
-                    component="a"
-                    href={member.portfolioLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      textTransform: "none",
-                      borderRadius: "999px",
-                      px: 2.5,
-                      fontWeight: 600,
-                      backgroundColor: "#84cc16",
-                      "&:hover": {
-                        backgroundColor: "#65a30d",
-                      },
-                    }}
-                  >
-                    Portfolio
-                  </Button>
+                  {
+                    member.portfolioLink !== "" && (
+                      <Button
+                        size="small"
+                        variant="contained"
+                        component="a"
+                        href={member.portfolioLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        sx={{
+                          textTransform: "none",
+                          borderRadius: "999px",
+                          px: 2.5,
+                          fontWeight: 600,
+                          backgroundColor: "#84cc16",
+                          "&:hover": {
+                            backgroundColor: "#65a30d",
+                          },
+                        }}
+                      >
+                        Portfolio
+                      </Button>
+                    )
+                  }
                 </Stack>
 
                 {/* SOCIAL ICONS */}
@@ -225,24 +254,57 @@ const Team = () => {
                   justifyContent="center"
                   mt={3}
                 >
-                  <IconButton size="small">
-                    <FacebookIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small">
-                    <TwitterIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small">
-                    <InstagramIcon fontSize="small" />
-                  </IconButton>
-                  <IconButton size="small">
-                    <LinkedInIcon fontSize="small" />
-                  </IconButton>
+                  {member.facebookLink !== "" && (
+                    <IconButton
+                      size="small"
+                      component="a"
+                      href={member.facebookLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FacebookIcon fontSize="small" />
+                    </IconButton>
+                  )}
+
+                  {member.instagramLink !== "" && (
+                    <IconButton
+                      size="small"
+                      component="a"
+                      href={member.instagramLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <InstagramIcon fontSize="small" />
+                    </IconButton>
+                  )}
+
+                  {member.linkedinLink !== "" && (
+                    <IconButton
+                      size="small"
+                      component="a"
+                      href={member.linkedinLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <LinkedInIcon fontSize="small" />
+                    </IconButton>
+                  )}
                 </Stack>
+
               </CardContent>
             </Card>
           </motion.div>
         ))}
       </Box>
+      <KnowMoreDialog
+        open={open}
+        isClose={() => setOpen(false)}
+        name={selectedMember?.name}
+        image={selectedMember?.image1 || selectedMember?.image}
+        description={selectedMember?.detailedDescription}
+        experience={selectedMember?.experience}
+        education={selectedMember?.education}
+      />
     </Container>
   );
 };

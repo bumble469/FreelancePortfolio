@@ -26,9 +26,9 @@ const Footer = () => {
             <Typography
               variant="h6"
               fontWeight={700}
-              sx={{ fontFamily: "monospace", color: "#111827" }}
+              sx={{ fontFamily: "TitleFont", color: "#111827" }}
             >
-              Website Name
+              SysKraft
             </Typography>
 
             <Typography variant="body2" color="text.secondary">
@@ -48,14 +48,14 @@ const Footer = () => {
               <Typography
                 variant="body2"
                 component="a"
-                href="mailto:contact@devaddict.com"
+                href="mailto:contact@syskraft.com"
                 sx={{
                   color: "text.secondary",
                   textDecoration: "none",
                   "&:hover": { color: "primary.main" },
                 }}
               >
-                contact@devaddict.com
+                contact@syskraft.com
               </Typography>
             </Stack>
 
@@ -103,7 +103,7 @@ const Footer = () => {
           color="text.secondary"
           textAlign="center"
         >
-          © {new Date().getFullYear()} Website Name. All rights reserved.
+          © {new Date().getFullYear()} SysKraft. All rights reserved.
         </Typography>
       </Box>
     </Box>
