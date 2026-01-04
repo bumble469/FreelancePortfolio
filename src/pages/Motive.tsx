@@ -12,8 +12,7 @@ import motiveImage2 from "../assets/images/motive2.jpg";
 
 const Motive = () => {
   return (
-    <Container id="motive" maxWidth="lg" sx={{ py: 8 }}>
-      {/* HEADER */}
+    <Container id="motive" maxWidth="lg" sx={{ py: 8, scrollMarginTop: { xs: "66px", md: "12px"} }}>
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -25,6 +25,33 @@ const Hero = () => {
             </motion.div>
 
             <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ amount: 0.4 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <Typography
+                mt={1.5}
+                sx={{
+                  fontWeight: 600,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  fontSize: "0.85rem",
+                  background:
+                    "linear-gradient(90deg, #6366F1, #8B5CF6)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                Analyze · Architect · Build
+              </Typography>
+            </motion.div>
+
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ amount: 0.4 }}
@@ -53,7 +80,7 @@ const Hero = () => {
                 mt={2}
                 maxWidth={620}
                 color="text.secondary"
-                sx={{ lineHeight: 1.7 }}
+                sx={{ lineHeight: 1.7, textAlign: 'justify' }}
               >
                 We are a small freelancing group helping startups, businesses, and
                 individuals turn ideas into reliable digital products. From fast
@@ -107,7 +134,10 @@ const Hero = () => {
             </motion.div>
           </Grid>
 
-          <Grid size={{ xs: 12, md: 5 }} display="flex" justifyContent="center">
+          <Grid size={{ xs: 12, md: 5 }} sx={{
+            display: { xs: "none", sm: "none", md: "flex" },
+            justifyContent: "center",
+          }}>
             <motion.div
               initial={{ opacity: 0, x: 60 }}
               whileInView={{ opacity: 1, x: 0 }}

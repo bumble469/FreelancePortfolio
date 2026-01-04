@@ -52,7 +52,9 @@ const Navbar = () => {
         });
       },
       {
-        rootMargin: "-45% 0px -45% 0px",
+        rootMargin: isMobile
+          ? "-10% 0px -80% 0px" 
+          : "-45% 0px -45% 0px", 
       }
     );
 

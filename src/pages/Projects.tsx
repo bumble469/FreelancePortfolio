@@ -64,7 +64,7 @@ const Projects = () => {
       id="projects"
       maxWidth="lg"
       ref={sectionRef}
-      sx={{ py: 8 }}
+      sx={{ py: 8, scrollMarginTop: { xs: "66px", md: "12px"} }}
     >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
