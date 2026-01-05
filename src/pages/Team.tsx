@@ -11,8 +11,6 @@ import {
   useMediaQuery,
 } from "@mui/material";
 import { useState, useRef } from "react";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -21,6 +19,7 @@ import KnowMoreDialog from "../components/KnowMoreDialog";
 
 import jatinImage from "../assets/images/jatinImage.jpg";
 import alisherImage from "../assets/images/alisherImage.png";
+import urmilImage from "../assets/images/urmilImage.png";
 
 interface TeamMember {
   name: string;
@@ -32,8 +31,6 @@ interface TeamMember {
   image1?: string;
   experience?: string;
   education?: string;
-  facebookLink?: string;
-  instagramLink?: string;
   linkedinLink?: string;
 }
 
@@ -46,9 +43,7 @@ const teamMembers: TeamMember[] = [
     detailedDescription: "Long detailed bio about Jatin...",
     image1: jatinImage,
     experience: "5+ years managing cross-functional teams",
-    education: "MBA in Project Management",
-    facebookLink: "https://facebook.com/jatin.ramina",
-    instagramLink: "https://instagram.com/jatin.ramina",
+    education: "BSC CS in Computed Science",
     linkedinLink: "https://linkedin.com/in/jatinramina",
   },
   {
@@ -59,10 +54,21 @@ const teamMembers: TeamMember[] = [
     portfolioLink: "https://portfolio-alishers-projects-a4332045.vercel.app",
     detailedDescription: "Long detailed bio about Ali...",
     image1: alisherImage,
-    experience: "2+ years managing cross-functional teams",
-    education: "BSC CS in Project Management",
-    instagramLink: "https://instagram.com/alisher.sayed",
+    experience: "8 months of professional experience as a Full-Stack Developer",
+    education: "BSC CS in Computed Science",
     linkedinLink: "https://linkedin.com/in/alishersayed",
+  },
+  {
+    name: "Urmil Pawaskar",
+    role: "Developer",
+    description: "Glavi amet ritnisl libero molestie...",
+    image: urmilImage,
+    portfolioLink: "",
+    detailedDescription: "Long detailed bio about Urmil...",
+    image1: urmilImage,
+    experience: "2+ years managing cross-functional teams",
+    education: "BSC CS in Computed Science",
+    linkedinLink: "https://linkedin.com/in/urmil",
   },
 ];
 
@@ -275,28 +281,6 @@ const Team = () => {
 
                   {/* SOCIAL ICONS */}
                   <Stack direction="row" spacing={1} justifyContent="center" mt={3}>
-                    {member.facebookLink && (
-                      <IconButton
-                        size="small"
-                        component="a"
-                        href={member.facebookLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FacebookIcon fontSize="small" />
-                      </IconButton>
-                    )}
-                    {member.instagramLink && (
-                      <IconButton
-                        size="small"
-                        component="a"
-                        href={member.instagramLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <InstagramIcon fontSize="small" />
-                      </IconButton>
-                    )}
                     {member.linkedinLink && (
                       <IconButton
                         size="small"
@@ -315,7 +299,6 @@ const Team = () => {
           ))}
         </Box>
 
-        {/* RIGHT ARROW (MOBILE ONLY) */}
         {isMobile && (
           <IconButton
             onClick={() => scrollByCard("right")}
@@ -335,7 +318,6 @@ const Team = () => {
         )}
       </Box>
 
-      {/* DIALOG */}
       <KnowMoreDialog
         open={open}
         isClose={() => setOpen(false)}
